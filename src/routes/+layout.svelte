@@ -1,7 +1,14 @@
 <script lang="ts">
-	import '../app.css';
-	
+	import { pwaInfo } from "virtual:pwa-info";
+
+	import "../app.css";
+
 	let { children } = $props();
+	const webManifestLink = pwaInfo ? pwaInfo.webManifest.linkTag : "";
 </script>
+
+<svelte:head>
+	{@html webManifestLink}
+</svelte:head>
 
 {@render children()}
